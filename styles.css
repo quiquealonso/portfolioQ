@@ -1,0 +1,175 @@
+:root {
+  color-scheme: dark;
+  --background: #071426;
+  --background-light: #0d213b;
+  --surface: rgba(17, 42, 72, 0.82);
+  --surface-strong: #12345a;
+  --border: rgba(130, 190, 238, 0.2);
+  --text: #edf6ff;
+  --muted: #a9bfd5;
+  --accent: #65c7f2;
+  --accent-strong: #2c9bd1;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 85% 10%, rgba(34, 126, 181, 0.2), transparent 28rem),
+    linear-gradient(135deg, var(--background) 0%, #0a1b31 55%, #0d2745 100%);
+  font-family: "Aptos", "Segoe UI", sans-serif;
+  line-height: 1.7;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgba(126, 188, 225, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 188, 225, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+header,
+main {
+  width: min(100% - 3rem, 1040px);
+  margin-inline: auto;
+}
+
+header {
+  padding: clamp(5rem, 13vw, 9rem) 0 4.5rem;
+}
+
+header h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.8rem, 8vw, 5.8rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+header p {
+  margin: 1.5rem 0 2rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+header a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.4rem;
+  color: var(--text);
+  background: var(--accent-strong);
+  box-shadow: 0 8px 24px rgba(44, 155, 209, 0.22);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+header a:hover,
+header a:focus-visible {
+  background: #42b4e8;
+  box-shadow: 0 12px 30px rgba(44, 155, 209, 0.34);
+  transform: translateY(-2px);
+}
+
+header a:focus-visible {
+  outline: 3px solid rgba(101, 199, 242, 0.45);
+  outline-offset: 4px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: 1.5rem;
+  padding-bottom: 6rem;
+}
+
+section {
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+section h2 {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+section p {
+  margin: 0;
+  color: var(--muted);
+}
+
+section ul {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--muted);
+}
+
+section li::before {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(101, 199, 242, 0.7);
+  content: "";
+}
+
+@media (max-width: 720px) {
+  header,
+  main {
+    width: min(100% - 2rem, 640px);
+  }
+
+  header {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header a {
+    transition: none;
+  }
+}
