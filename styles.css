@@ -151,6 +151,9 @@ section li::before {
   content: "";
 }
 
+@media (max-width: 720px) {
+  header,
+  main {
 .contacto {
   grid-column: 1 / -1;
 }
@@ -220,6 +223,7 @@ footer p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  header a {
   header a,
   .enlaces-contacto a {
     transition: none;
