@@ -19,7 +19,7 @@ jobs:
       - name: Preparar Node
         uses: actions/setup-node@v4
         with:
-          node-version: tururu
+          node-version: 22
 
       - name: Validar el HTML
         run: npx --yes html-validate@9 "**/*.html"
