@@ -187,9 +187,24 @@ section li::before {
   outline-offset: 3px;
 }
 
+footer {
+  width: min(100% - 3rem, 1040px);
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
 @media (max-width: 720px) {
   header,
-  main {
+  main,
+  footer {
     width: min(100% - 2rem, 640px);
   }
 
