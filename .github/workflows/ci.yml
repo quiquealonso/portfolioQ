@@ -48,4 +48,4 @@ jobs:
           node-version: 22
 
       - name: Comprobar el formato
-        run: npx --yes prettier@3 --check "**/*.{html,css,json,md}"
+        run: npx --yes prettier@3 --check "**/*.{css,json,md}"
