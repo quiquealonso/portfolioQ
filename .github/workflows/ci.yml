@@ -23,3 +23,15 @@ jobs:
 
       - name: Validar el HTML
         run: npx --yes html-validate@9 "**/*.html"
+  enlaces:
+    name: Enlaces vivos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Comprobar los enlaces
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 2 "**/*.html"
+          fail: true
