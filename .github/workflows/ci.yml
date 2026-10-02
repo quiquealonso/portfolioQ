@@ -35,3 +35,17 @@ jobs:
         with:
           args: --no-progress --max-retries 2 "**/*.html"
           fail: true
+  formato:
+    name: Formato
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Comprobar el formato
+        run: npx --yes prettier@3 --check "**/*.{html,css,json,md}"
