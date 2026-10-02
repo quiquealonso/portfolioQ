@@ -49,7 +49,7 @@ jobs:
 
       - name: Comprobar el formato
         run: npx --yes prettier@3 --check "**/*.{css,json,md}"
-    calidad:
+  calidad:
     name: Presupuesto de calidad
     runs-on: ubuntu-latest
     steps:
