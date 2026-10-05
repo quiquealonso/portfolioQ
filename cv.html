@@ -3,8 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>...</title>
+    <title>Currículum · Enrique Alonso Puig</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      var root = document.documentElement;
+      var viaLink = false;
+      root.classList.add("js");
+      try {
+        viaLink = Boolean(sessionStorage.getItem("pt"));
+        sessionStorage.removeItem("pt");
+      } catch (error) {}
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.classList.add(viaLink ? "is-entering" : "is-loading");
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -144,5 +156,10 @@
         >GitHub</a
       >
     </footer>
+    <script src="vendor/gsap.min.js" defer></script>
+    <script src="vendor/ScrollTrigger.min.js" defer></script>
+    <script src="vendor/SplitText.min.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script type="module" src="js/background.js"></script>
   </body>
 </html>

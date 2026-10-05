@@ -3,8 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>...</title>
+    <title>Enrique Alonso Puig · Portfolio de desarrollo de aplicaciones</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      var root = document.documentElement;
+      var viaLink = false;
+      root.classList.add("js");
+      try {
+        viaLink = Boolean(sessionStorage.getItem("pt"));
+        sessionStorage.removeItem("pt");
+      } catch (error) {}
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.classList.add(viaLink ? "is-entering" : "is-loading");
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -24,9 +36,7 @@
     <main>
       <section class="hero shell">
         <p class="eyebrow">Portfolio profesional · DAW</p>
-        <h1>
-          Construyo soluciones digitales con una mirada práctica y curiosa.
-        </h1>
+        <h1>Convierto ideas en aplicaciones claras, útiles y bien construidas.</h1>
         <p class="hero-lead">
           Soy Enrique Alonso Puig, desarrollador formado en DAM y estudiante de
           DAW. Me interesa crear aplicaciones claras, útiles y bien
@@ -46,6 +56,13 @@
           >
         </div>
       </section>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Java</span><span>JavaFX</span><span>Python</span><span>Odoo</span
+          ><span>HTML</span><span>CSS</span><span>Git</span><span>GitHub</span
+          ><span>Maven</span><span>Gradle</span><span>MkDocs</span>
+        </div>
+      </div>
       <section class="intro-grid shell" aria-labelledby="sobre-mi">
         <div>
           <p class="eyebrow">Perfil</p>
@@ -114,5 +131,10 @@
         >GitHub</a
       >
     </footer>
+    <script src="vendor/gsap.min.js" defer></script>
+    <script src="vendor/ScrollTrigger.min.js" defer></script>
+    <script src="vendor/SplitText.min.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script type="module" src="js/background.js"></script>
   </body>
 </html>
