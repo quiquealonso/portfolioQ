@@ -3,138 +3,758 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Enrique Alonso Puig · Portfolio de desarrollo de aplicaciones</title>
+    <title>Enrique Alonso Puig · Desarrollador de aplicaciones</title>
+    <meta
+      name="description"
+      content="Portfolio de Enrique Alonso Puig, desarrollador junior formado en DAM y estudiante de DAW. Java, Python, Odoo y web."
+    >
+    <meta name="theme-color" content="#031314">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap"
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script>
-      var root = document.documentElement;
-      var viaLink = false;
-      root.classList.add("js");
-      try {
-        viaLink = Boolean(sessionStorage.getItem("pt"));
-        sessionStorage.removeItem("pt");
-      } catch (error) {}
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        root.classList.add(viaLink ? "is-entering" : "is-loading");
-      }
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var t = null;
+        try {
+          t = localStorage.getItem("ea-theme");
+        } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+        }
+        d.setAttribute("data-theme", t);
+        try {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          var s = sessionStorage;
+          if (s.getItem("ea-nav")) {
+            d.classList.add("is-entering");
+            s.removeItem("ea-nav");
+          } else if (!s.getItem("ea-seen")) {
+            d.classList.add("is-loading");
+            s.setItem("ea-seen", "1");
+          }
+        } catch (e) {}
+      })();
     </script>
   </head>
-  <body>
+  <body data-page="inicio">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
-      <nav class="site-nav shell" aria-label="Navegación principal">
-        <a class="brand" href="index.html"
-          >Enrique Alonso Puig<span>Desarrollo de aplicaciones</span></a
-        >
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="logo" href="index.html" aria-label="Inicio, Enrique Alonso">
+          <span class="logo-byte" data-byte="head"></span>
+          <span class="logo-text">enrique<b>.</b>alonso</span>
+        </a>
         <div class="nav-links">
-          <a href="proyectos.html">Proyectos</a>
-          <a href="cv.html">CV</a>
-          <a class="nav-contact" href="mailto:enralopui@alu.edu.gva.es"
-            >Contacto</a
+          <a class="roll is-active" href="index.html" aria-current="page"
+            ><span data-text="Inicio">Inicio</span></a
           >
+          <a class="roll" href="proyectos.html"
+            ><span data-text="Proyectos">Proyectos</span></a
+          >
+          <a class="roll" href="cv.html"><span data-text="CV">CV</span></a>
+        </div>
+        <div class="nav-end">
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            data-magnetic
+            aria-label="Activar modo claro"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <mask id="tt-moon">
+                <rect width="24" height="24" fill="#fff" />
+                <circle class="tt-bite" cx="24" cy="4" r="6" fill="#000" />
+              </mask>
+              <circle class="tt-core" cx="12" cy="12" r="5" mask="url(#tt-moon)" />
+              <path
+                class="tt-rays"
+                d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+              />
+            </svg>
+          </button>
+          <a class="nav-status" href="#contacto" data-magnetic>
+            <i aria-hidden="true"></i>Disponible
+          </a>
         </div>
       </nav>
     </header>
-    <main>
-      <section class="hero shell">
-        <p class="eyebrow">Portfolio profesional · DAW</p>
-        <h1>Convierto ideas en aplicaciones claras, útiles y bien construidas.</h1>
-        <p class="hero-lead">
-          Soy Enrique Alonso Puig, desarrollador formado en DAM y estudiante de
-          DAW. Me interesa crear aplicaciones claras, útiles y bien
-          estructuradas, desde la lógica del backend hasta la experiencia de
-          quien las utiliza.
-        </p>
-        <p class="hero-status">
-          <span aria-hidden="true"></span>Disponible para prácticas y nuevas
-          oportunidades
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="proyectos.html"
-            >Ver proyectos</a
-          >
-          <a class="button button-secondary" href="cv.html"
-            >Conocer mi perfil</a
-          >
+
+    <main id="contenido">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-meta wrap">
+          <p class="mono" data-intro>[ Portfolio · 2026 ]</p>
+          <p class="mono" data-intro>
+            Alberic, Valencia · <span data-clock>--:--</span>
+          </p>
         </div>
+
+        <h1 id="hero-title" class="hero-name wrap">
+          <span class="visually-hidden">Enrique Alonso</span>
+          <span class="hero-line" aria-hidden="true" data-proximity>Enrique</span>
+          <span
+            class="hero-line hero-line--outline"
+            aria-hidden="true"
+            data-proximity
+            >Alonso</span
+          >
+        </h1>
+
+        <div class="hero-bottom wrap">
+          <div class="hero-copy">
+            <p class="hero-role" data-intro>
+              Hago
+              <span
+                class="scramble"
+                data-scramble="aplicaciones de escritorio|módulos para Odoo|webs que se mueven|backend ordenado"
+                >aplicaciones de escritorio</span
+              >
+            </p>
+            <p class="hero-lead" data-intro>
+              Desarrollador junior formado en DAM y estudiando DAW. Busco un
+              equipo donde aportar desde el primer día y seguir aprendiendo.
+            </p>
+            <div class="hero-actions" data-intro>
+              <a
+                class="btn btn--solid"
+                href="proyectos.html"
+                data-magnetic
+                data-cursor="Ver"
+                ><span>Ver proyectos</span><i aria-hidden="true">→</i></a
+              >
+              <a class="btn btn--ghost" href="cv.html" data-magnetic
+                ><span>Mi currículum</span></a
+              >
+            </div>
+          </div>
+
+          <div class="terminal-scene" data-intro-scene>
+            <div class="terminal-byte" data-byte="peek"></div>
+            <div class="terminal">
+              <div class="terminal-bar" aria-hidden="true">
+                <i></i><i></i><i></i><span>~/enrique — zsh</span>
+              </div>
+              <div class="terminal-hands" aria-hidden="true">
+                <i></i><i></i>
+              </div>
+              <ol class="terminal-body" data-terminal>
+                <li class="cmd">whoami</li>
+                <li>enrique-alonso · desarrollador junior</li>
+                <li class="cmd">stack --top</li>
+                <li class="hl">java python odoo javafx git</li>
+                <li class="cmd">status</li>
+                <li class="ok">● disponible para trabajar</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <p class="scroll-hint mono" aria-hidden="true"><i></i>scroll</p>
       </section>
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>Java</span><span>JavaFX</span><span>Python</span><span>Odoo</span
-          ><span>HTML</span><span>CSS</span><span>Git</span><span>GitHub</span
-          ><span>Maven</span><span>Gradle</span><span>MkDocs</span>
+
+      <div class="marquees" aria-hidden="true">
+        <div class="marquee" data-marquee="1">
+          <div class="marquee-track">
+            <span>Java</span><span>Python</span><span>Odoo</span
+            ><span>JavaFX</span><span>HTML</span><span>CSS</span
+            ><span>JavaScript</span><span>Git</span><span>GitHub</span
+            ><span>Maven</span><span>Gradle</span><span>MkDocs</span>
+          </div>
+        </div>
+        <div class="marquee marquee--alt" data-marquee="-1">
+          <div class="marquee-track">
+            <span>Código limpio</span><span>Trabajo en equipo</span
+            ><span>Ganas de aprender</span><span>Constancia</span
+            ><span>Atención al detalle</span>
+          </div>
         </div>
       </div>
-      <section class="intro-grid shell" aria-labelledby="sobre-mi">
-        <div>
-          <p class="eyebrow">Perfil</p>
-          <h2 id="sobre-mi">Una base técnica y ganas de seguir creciendo.</h2>
+
+      <section class="about" aria-labelledby="about-title">
+        <div class="about-pin">
+          <div class="about-grid wrap">
+            <div class="about-intro">
+              <p class="kicker mono" data-reveal="up">
+                <span>01</span> Sobre mí
+              </p>
+              <h2 id="about-title" class="section-title" data-reveal="chars">
+                Un poco sobre mí
+              </h2>
+              <p class="about-lead" data-reveal="up">
+                Me gusta construir aplicaciones que se entiendan a la primera,
+                con un código que otra persona pueda leer mañana.
+              </p>
+              <ol class="deck-dots" aria-hidden="true">
+                <li class="is-on"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ol>
+            </div>
+
+            <ol class="deck">
+              <li class="deck-card">
+                <div class="deck-top">
+                  <em class="chip"><b aria-hidden="true">🎓</b>DAM</em>
+                  <span class="mono deck-num">01 / 04</span>
+                </div>
+                <h3>Desarrollo Multiplataforma</h3>
+                <p>
+                  Graduado en el IES Consuelo Aranda. Allí aprendí Java, JavaFX,
+                  Python y Odoo, y a organizar un proyecto de principio a fin.
+                </p>
+              </li>
+              <li class="deck-card">
+                <div class="deck-top">
+                  <em class="chip chip--lime"
+                    ><b aria-hidden="true">🌐</b>DAW</em
+                  >
+                  <span class="mono deck-num">02 / 04</span>
+                </div>
+                <h3>Ahora, la web</h3>
+                <p>
+                  Estudio Desarrollo de Aplicaciones Web en el IES Doctor Lluís
+                  Simarro Lacabra. Este portfolio es uno de sus proyectos.
+                </p>
+              </li>
+              <li class="deck-card">
+                <div class="deck-top">
+                  <em class="chip chip--ink"
+                    ><b aria-hidden="true">💼</b>Oberta IT</em
+                  >
+                  <span class="mono deck-num">03 / 04</span>
+                </div>
+                <h3>Experiencia real</h3>
+                <p>
+                  Prácticas de DAM en OBERTA y contrato temporal en Oberta IT
+                  Servicios Tecnológicos: trabajo de verdad, en equipo y con
+                  plazos.
+                </p>
+              </li>
+              <li class="deck-card">
+                <div class="deck-top">
+                  <em class="chip chip--warm"
+                    ><b aria-hidden="true">🎺</b>Bombardino</em
+                  >
+                  <span class="mono deck-num">04 / 04</span>
+                </div>
+                <h3>Seis años de conservatorio</h3>
+                <p>
+                  Enseñanzas profesionales de música. Constancia, escuchar al
+                  resto y ensayar hasta que sale: también vale para programar.
+                </p>
+              </li>
+            </ol>
+          </div>
         </div>
-        <div class="copy-block">
-          <p>
-            Soy graduado en Desarrollo de Aplicaciones Multiplataforma (DAM) por
-            el IES Consuelo Aranda y actualmente estudio Desarrollo de
-            Aplicaciones Web (DAW) en el IES Doctor Lluís Simarro Lacabra.
+
+        <ul class="stats wrap">
+          <li data-reveal="up">
+            <strong><span data-count="2">2</span></strong>
+            <span class="stat-label">ciclos de FP terminados</span>
+          </li>
+          <li data-reveal="up" data-delay="0.1">
+            <strong><span data-count="2">2</span></strong>
+            <span class="stat-label">periodos de prácticas en empresa</span>
+          </li>
+          <li data-reveal="up" data-delay="0.2">
+            <strong><span data-count="10">10</span><sup>+</sup></strong>
+            <span class="stat-label">tecnologías con las que trabajo</span>
+          </li>
+          <li data-reveal="up" data-delay="0.3">
+            <strong><span data-count="6">6</span></strong>
+            <span class="stat-label">años de conservatorio</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="skills wrap" aria-labelledby="skills-title">
+        <div class="section-head">
+          <p class="kicker mono" data-reveal="up">
+            <span>02</span> Lo que sé hacer
           </p>
-          <p>
-            También tengo el título de enseñanzas profesionales de Música, en la
-            especialidad de bombardino, por el Conservatorio de Carcaixent. El
-            deporte y los videojuegos forman parte de mi tiempo libre y
-            refuerzan mi interés por el trabajo en equipo, la estrategia y la
-            creatividad.
-          </p>
+          <h2 id="skills-title" class="section-title" data-reveal="chars">
+            Mi caja de herramientas
+          </h2>
+        </div>
+
+        <div class="bento">
+          <article class="tile tile--code" data-tile>
+            <header class="tile-head">
+              <h3>Lógica y backend</h3>
+              <p>
+                Java y Python, con clases claras y responsabilidades bien
+                repartidas.
+              </p>
+            </header>
+            <div class="editor" data-editor>
+              <div
+                class="editor-tabs"
+                role="tablist"
+                aria-label="Archivos de ejemplo"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="tab-coleccion"
+                  aria-controls="code-coleccion"
+                  aria-selected="true"
+                >
+                  Coleccion.java
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="tab-app"
+                  aria-controls="code-app"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  App.java
+                </button>
+              </div>
+              <pre
+                class="editor-code"
+                id="code-coleccion"
+                role="tabpanel"
+                aria-labelledby="tab-coleccion"
+                tabindex="0"
+              ><code><span class="l"><i class="k">public class</i> <i class="t">Coleccion</i> {</span>
+<span class="l">  <i class="k">private final</i> <i class="t">List</i>&lt;<i class="t">Cromo</i>&gt; cromos;</span>
+<span class="l"> </span>
+<span class="l">  <i class="k">public</i> <i class="t">List</i>&lt;<i class="t">Cromo</i>&gt; <i class="f">filtrar</i>(<i class="t">int</i> anio) {</span>
+<span class="l">    <i class="k">return</i> cromos.<i class="f">stream</i>()</span>
+<span class="l">      .<i class="f">filter</i>(c -&gt; c.<i class="f">anio</i>() == anio)</span>
+<span class="l">      .<i class="f">toList</i>();</span>
+<span class="l">  }</span>
+<span class="l">}</span></code></pre>
+              <pre
+                class="editor-code"
+                id="code-app"
+                role="tabpanel"
+                aria-labelledby="tab-app"
+                tabindex="0"
+                hidden
+              ><code><span class="l"><i class="k">public class</i> <i class="t">App</i> <i class="k">extends</i> <i class="t">Application</i> {</span>
+<span class="l"> </span>
+<span class="l">  <i class="c">@Override</i></span>
+<span class="l">  <i class="k">public void</i> <i class="f">start</i>(<i class="t">Stage</i> stage) {</span>
+<span class="l">    <i class="k">var</i> vista = <i class="k">new</i> <i class="t">VistaColeccion</i>();</span>
+<span class="l">    stage.<i class="f">setScene</i>(<i class="k">new</i> <i class="t">Scene</i>(vista, <i class="n">960</i>, <i class="n">600</i>));</span>
+<span class="l">    stage.<i class="f">setTitle</i>(<i class="s">"Gestor de Cromos"</i>);</span>
+<span class="l">    stage.<i class="f">show</i>();</span>
+<span class="l">  }</span>
+<span class="l">}</span></code></pre>
+            </div>
+          </article>
+
+          <article class="tile tile--odoo" data-tile>
+            <header class="tile-head">
+              <h3>Odoo y datos</h3>
+              <p>Modelos, relaciones, vistas y validaciones.</p>
+            </header>
+            <svg class="graph" viewBox="0 0 300 170" aria-hidden="true">
+              <path id="e1" class="edge" d="M60 40 C120 40 120 85 150 85" />
+              <path id="e2" class="edge" d="M150 85 C190 85 190 40 240 40" />
+              <path id="e3" class="edge" d="M150 85 C190 85 190 130 240 130" />
+              <path id="e4" class="edge" d="M60 130 C120 130 120 85 150 85" />
+              <circle class="packet" r="3.5">
+                <animateMotion dur="2.6s" repeatCount="indefinite">
+                  <mpath href="#e1" />
+                </animateMotion>
+              </circle>
+              <circle class="packet" r="3.5">
+                <animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite">
+                  <mpath href="#e3" />
+                </animateMotion>
+              </circle>
+              <circle class="packet packet--alt" r="3.5">
+                <animateMotion dur="3.2s" repeatCount="indefinite">
+                  <mpath href="#e4" />
+                </animateMotion>
+              </circle>
+              <circle class="packet packet--alt" r="3.5">
+                <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite">
+                  <mpath href="#e2" />
+                </animateMotion>
+              </circle>
+              <g class="node">
+                <rect x="18" y="26" width="84" height="28" rx="14" />
+                <text x="60" y="44">Dron</text>
+              </g>
+              <g class="node">
+                <rect x="18" y="116" width="84" height="28" rx="14" />
+                <text x="60" y="134">Piloto</text>
+              </g>
+              <g class="node node--core">
+                <rect x="108" y="69" width="84" height="32" rx="16" />
+                <text x="150" y="89">Vuelo</text>
+              </g>
+              <g class="node">
+                <rect x="198" y="26" width="84" height="28" rx="14" />
+                <text x="240" y="44">Paquete</text>
+              </g>
+              <g class="node">
+                <rect x="198" y="116" width="84" height="28" rx="14" />
+                <text x="240" y="134">Cliente</text>
+              </g>
+            </svg>
+          </article>
+
+          <article class="tile tile--git" data-tile>
+            <header class="tile-head">
+              <h3>Git y GitHub</h3>
+              <p>Issues, ramas y pull requests para cada cambio.</p>
+            </header>
+            <svg class="git" viewBox="0 0 300 120" aria-hidden="true">
+              <path class="git-main" d="M10 80 H290" />
+              <path
+                class="git-branch"
+                d="M70 80 C100 80 100 34 130 34 H200 C230 34 230 80 260 80"
+              />
+              <circle class="commit" cx="40" cy="80" r="6" />
+              <circle class="commit" cx="70" cy="80" r="6" />
+              <circle class="commit commit--b" cx="140" cy="34" r="6" />
+              <circle class="commit commit--b" cx="190" cy="34" r="6" />
+              <circle class="commit" cx="160" cy="80" r="6" />
+              <circle class="commit commit--merge" cx="260" cy="80" r="8" />
+              <text x="12" y="106">main</text>
+              <text x="132" y="18">feature/animaciones</text>
+            </svg>
+          </article>
+
+          <article class="tile tile--ci" data-tile>
+            <header class="tile-head">
+              <h3>Calidad automática</h3>
+              <p>El pipeline real de este portfolio.</p>
+            </header>
+            <ul class="ci" aria-hidden="true">
+              <li><i></i>HTML válido</li>
+              <li><i></i>Enlaces vivos</li>
+              <li><i></i>Formato</li>
+              <li><i></i>Lighthouse</li>
+            </ul>
+          </article>
+
+          <article class="tile tile--ui" data-tile>
+            <header class="tile-head">
+              <h3>Interfaces</h3>
+              <p>JavaFX, HTML y CSS pensando en quien las usa.</p>
+            </header>
+            <div class="ui-mock" aria-hidden="true">
+              <i class="ui-nav"></i>
+              <i class="ui-title"></i>
+              <i class="ui-text"></i>
+              <i class="ui-text ui-text--short"></i>
+              <i class="ui-card"></i><i class="ui-card"></i
+              ><i class="ui-card"></i>
+              <i class="ui-btn"></i>
+              <i class="ui-pointer"></i>
+            </div>
+          </article>
+
+          <article class="tile tile--music" data-tile>
+            <header class="tile-head">
+              <h3>Más allá del código</h3>
+              <p>Música, deporte y videojuegos: estrategia, ritmo y equipo.</p>
+            </header>
+            <div class="eq" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+              ><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </article>
         </div>
       </section>
-      <section class="capabilities shell" aria-labelledby="competencias">
-        <div class="section-heading">
-          <p class="eyebrow">Cómo trabajo</p>
-          <h2 id="competencias">Competencias que aplico en mis proyectos</h2>
+
+      <section class="work" aria-labelledby="work-title">
+        <div class="section-head wrap">
+          <p class="kicker mono" data-reveal="up">
+            <span>03</span> Proyectos destacados
+          </p>
+          <h2 id="work-title" class="section-title" data-reveal="chars">
+            Cosas que he construido
+          </h2>
         </div>
-        <div class="capability-list">
-          <article>
-            <span>01</span>
-            <h3>Desarrollo</h3>
-            <p>
-              Diseño y estructuro aplicaciones pensando en que sean mantenibles
-              y útiles.
-            </p>
+
+        <div class="stack wrap">
+          <article class="stack-card">
+            <div class="stack-info">
+              <p class="mono stack-num">01 / Odoo · Python</p>
+              <h3>odooQuique</h3>
+              <p>
+                Módulos de Odoo para gestionar una operativa de drones: drones,
+                vuelos, paquetes, clientes y pilotos conectados entre sí.
+              </p>
+              <ul class="tags">
+                <li>Modelos y relaciones</li>
+                <li>Vistas</li>
+                <li>Validaciones</li>
+              </ul>
+              <a
+                class="link-arrow"
+                href="https://github.com/quiquealonso/odooQuique"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="Abrir"
+                >Ver repositorio <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="mock mock--kanban" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>Odoo · Vuelos</span>
+              </div>
+              <div class="kanban">
+                <div class="col">
+                  <b>Pendiente</b><i class="k-ghost"></i><i>DRN-07</i>
+                </div>
+                <div class="col"><b>En vuelo</b><i>DRN-01</i></div>
+                <div class="col">
+                  <b>Entregado</b><i>DRN-02</i><i>DRN-05</i>
+                </div>
+              </div>
+              <i class="kanban-moving">DRN-03 ✈</i>
+            </div>
           </article>
-          <article>
-            <span>02</span>
-            <h3>Organización</h3>
-            <p>
-              Planifico tareas con issues, ramas y un flujo de trabajo claro en
-              GitHub.
-            </p>
+
+          <article class="stack-card">
+            <div class="stack-info">
+              <p class="mono stack-num">02 / Escritorio · Java 21</p>
+              <h3>Gestor de Cromos</h3>
+              <p>
+                Aplicación JavaFX para gestionar colecciones de cromos de
+                fútbol: filtros por año, equipo y categoría, estadísticas y
+                valor de mercado.
+              </p>
+              <ul class="tags">
+                <li>JavaFX</li>
+                <li>Maven / Gradle</li>
+                <li>MkDocs</li>
+              </ul>
+              <div class="links">
+                <a
+                  class="link-arrow"
+                  href="https://github.com/quiquealonso/GestorCromos"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="Abrir"
+                  >Repositorio <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  class="link-arrow"
+                  href="https://quiquealonso.github.io/GestorCromos/"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="Leer"
+                  >Documentación <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+            <div class="mock mock--cards" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>Gestor de Cromos</span>
+              </div>
+              <div class="filters">
+                <i class="is-on">2024</i><i>Liga</i><i>Delanteros</i>
+              </div>
+              <div class="cromos">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
           </article>
-          <article>
-            <span>03</span>
-            <h3>Calidad</h3>
-            <p>
-              Reviso cambios y automatizo comprobaciones de HTML, enlaces y
-              accesibilidad.
-            </p>
+
+          <article class="stack-card">
+            <div class="stack-info">
+              <p class="mono stack-num">03 / Web · Este portfolio</p>
+              <h3>portfolioQ</h3>
+              <p>
+                La web que estás viendo: HTML, CSS y JavaScript sin frameworks,
+                animaciones con GSAP, un fondo hecho con un shader WebGL y un
+                pipeline de calidad en GitHub Actions.
+              </p>
+              <ul class="tags">
+                <li>GSAP</li>
+                <li>WebGL</li>
+                <li>GitHub Actions</li>
+              </ul>
+              <a
+                class="link-arrow"
+                href="https://github.com/quiquealonso/portfolioQ"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="Abrir"
+                >Ver repositorio <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="mock mock--site" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>quiquealonso.github.io</span>
+              </div>
+              <div class="site-mini">
+                <i class="sm-blob"></i>
+                <b>Enrique<br>Alonso</b>
+                <span class="sm-checks"
+                  ><i>✓ HTML</i><i>✓ Enlaces</i><i>✓ Lighthouse</i></span
+                >
+              </div>
+            </div>
           </article>
+        </div>
+
+        <p class="work-more wrap" data-reveal="up">
+          <a class="btn btn--ghost" href="proyectos.html" data-magnetic
+            ><span>Ver los proyectos en detalle</span
+            ><i aria-hidden="true">→</i></a
+          >
+        </p>
+      </section>
+
+      <section class="journey" aria-labelledby="journey-title">
+        <div class="journey-pin">
+          <div class="section-head wrap">
+            <p class="kicker mono"><span>04</span> Trayectoria</p>
+            <h2 id="journey-title" class="section-title">
+              De la partitura al código
+            </h2>
+          </div>
+          <div class="journey-track">
+            <ol class="journey-list">
+              <li class="milestone">
+                <span class="year">2018</span>
+                <h3>Conservatorio y ESO</h3>
+                <p>
+                  Empiezo las enseñanzas profesionales de música, especialidad
+                  de bombardino, en Carcaixent.
+                </p>
+              </li>
+              <li class="milestone">
+                <span class="year">2022</span>
+                <h3>Sistemas Microinformáticos y Redes</h3>
+                <p>
+                  Primer ciclo de FP en el IES Consuelo Aranda, con prácticas
+                  en PIMAT.
+                </p>
+              </li>
+              <li class="milestone">
+                <span class="year">2024</span>
+                <h3>Desarrollo Multiplataforma</h3>
+                <p>
+                  Empiezo DAM: Java, JavaFX, Python y Odoo. Termino también el
+                  conservatorio.
+                </p>
+              </li>
+              <li class="milestone">
+                <span class="year">2026</span>
+                <h3>Prácticas, contrato y DAW</h3>
+                <p>
+                  Prácticas de DAM en OBERTA, contrato en Oberta IT Servicios
+                  Tecnológicos y empiezo Desarrollo de Aplicaciones Web.
+                </p>
+              </li>
+              <li class="milestone milestone--next">
+                <span class="year">Next</span>
+                <h3>¿Tu equipo?</h3>
+                <p>
+                  Busco un sitio donde seguir creciendo como desarrollador.
+                  <a href="#contacto">Hablemos</a>.
+                </p>
+              </li>
+            </ol>
+            <div class="journey-progress" aria-hidden="true"><i></i></div>
+          </div>
         </div>
       </section>
-      <section class="contact-strip shell" aria-labelledby="contacto">
-        <div>
-          <p class="eyebrow">¿Hablamos?</p>
-          <h2 id="contacto">Estoy disponible para nuevas oportunidades.</h2>
+
+      <section
+        id="contacto"
+        class="contact wrap"
+        aria-labelledby="contact-title"
+      >
+        <p class="kicker mono" data-reveal="up"><span>05</span> Contacto</p>
+        <h2 id="contact-title" class="contact-title" data-reveal="chars">
+          ¿Construimos algo juntos?
+        </h2>
+        <div class="contact-grid">
+          <div
+            class="contact-byte"
+            data-byte="full"
+            data-say="¡Escríbele! Contesta rápido."
+          ></div>
+          <a
+            class="orbit"
+            href="mailto:enralopui@alu.edu.gva.es"
+            data-magnetic
+            aria-label="Escribir un correo a Enrique"
+          >
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path
+                  id="orbit-path"
+                  d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"
+                />
+              </defs>
+              <text>
+                <textPath href="#orbit-path" textLength="486"
+                  >escríbeme · disponible · escríbeme · disponible ·</textPath
+                >
+              </text>
+            </svg>
+            <span class="orbit-core" aria-hidden="true">✉</span>
+          </a>
+          <div class="contact-info">
+            <p>
+              Busco prácticas o mi siguiente oportunidad como desarrollador.
+              Cuéntame qué estás construyendo.
+            </p>
+            <div class="contact-actions">
+              <a class="mail" href="mailto:enralopui@alu.edu.gva.es"
+                >enralopui@alu.edu.gva.es</a
+              >
+              <button
+                type="button"
+                class="btn btn--ghost btn--sm"
+                data-copy="enralopui@alu.edu.gva.es"
+              >
+                <span>Copiar email</span>
+              </button>
+            </div>
+            <a
+              class="link-arrow"
+              href="https://github.com/quiquealonso"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub · quiquealonso <span aria-hidden="true">↗</span></a
+            >
+          </div>
         </div>
-        <a class="button button-primary" href="mailto:enralopui@alu.edu.gva.es"
-          >Escribirme un correo</a
-        >
       </section>
     </main>
-    <footer class="site-footer shell">
-      <p>&copy; 2026 Enrique Alonso Puig</p>
-      <a href="https://github.com/quiquealonso" target="_blank" rel="noreferrer"
-        >GitHub</a
-      >
+
+    <footer class="footer">
+      <p class="footer-name" aria-hidden="true" data-footer-name>
+        Enrique Alonso
+      </p>
+      <div class="footer-row wrap">
+        <p>&copy; 2026 Enrique Alonso Puig · Proyecto de DAW</p>
+        <p class="mono">Alberic · <span data-clock>--:--</span></p>
+        <a href="#contenido" class="link-arrow"
+          >Volver arriba <span aria-hidden="true">↑</span></a
+        >
+      </div>
     </footer>
+
     <script src="vendor/gsap.min.js" defer></script>
     <script src="vendor/ScrollTrigger.min.js" defer></script>
     <script src="vendor/SplitText.min.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script type="module" src="js/background.js"></script>
+    <script src="js/byte.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/bg.js" defer></script>
   </body>
 </html>
