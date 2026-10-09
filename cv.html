@@ -4,162 +4,282 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Currículum · Enrique Alonso Puig</title>
+    <meta
+      name="description"
+      content="Currículum de Enrique Alonso Puig: formación en SMR, DAM y DAW, prácticas en empresa, idiomas y herramientas."
+    >
+    <meta name="theme-color" content="#031314">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap"
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script>
-      var root = document.documentElement;
-      var viaLink = false;
-      root.classList.add("js");
-      try {
-        viaLink = Boolean(sessionStorage.getItem("pt"));
-        sessionStorage.removeItem("pt");
-      } catch (error) {}
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        root.classList.add(viaLink ? "is-entering" : "is-loading");
-      }
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var t = null;
+        try {
+          t = localStorage.getItem("ea-theme");
+        } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+        }
+        d.setAttribute("data-theme", t);
+        try {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          var s = sessionStorage;
+          if (s.getItem("ea-nav")) {
+            d.classList.add("is-entering");
+            s.removeItem("ea-nav");
+          } else if (!s.getItem("ea-seen")) {
+            d.classList.add("is-loading");
+            s.setItem("ea-seen", "1");
+          }
+        } catch (e) {}
+      })();
     </script>
   </head>
-  <body>
+  <body data-page="cv">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
-      <nav class="site-nav shell" aria-label="Navegación principal">
-        <a class="brand" href="index.html"
-          >Enrique Alonso Puig<span>Desarrollo de aplicaciones</span></a
-        >
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="logo" href="index.html" aria-label="Inicio, Enrique Alonso">
+          <span class="logo-byte" data-byte="head"></span>
+          <span class="logo-text">enrique<b>.</b>alonso</span>
+        </a>
         <div class="nav-links">
-          <a href="proyectos.html">Proyectos</a
-          ><a class="active" href="cv.html" aria-current="page">CV</a
-          ><a class="nav-contact" href="mailto:enralopui@alu.edu.gva.es"
-            >Contacto</a
+          <a class="roll" href="index.html"
+            ><span data-text="Inicio">Inicio</span></a
           >
+          <a class="roll" href="proyectos.html"
+            ><span data-text="Proyectos">Proyectos</span></a
+          >
+          <a class="roll is-active" href="cv.html" aria-current="page"
+            ><span data-text="CV">CV</span></a
+          >
+        </div>
+        <div class="nav-end">
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            data-magnetic
+            aria-label="Activar modo claro"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <mask id="tt-moon">
+                <rect width="24" height="24" fill="#fff" />
+                <circle class="tt-bite" cx="24" cy="4" r="6" fill="#000" />
+              </mask>
+              <circle class="tt-core" cx="12" cy="12" r="5" mask="url(#tt-moon)" />
+              <path
+                class="tt-rays"
+                d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+              />
+            </svg>
+          </button>
+          <a class="nav-status" href="index.html#contacto" data-magnetic>
+            <i aria-hidden="true"></i>Disponible
+          </a>
         </div>
       </nav>
     </header>
-    <main>
-      <section class="page-intro shell">
-        <p class="eyebrow">Perfil profesional</p>
-        <h1>Currículum</h1>
-        <p>
-          Formación, competencias y experiencia actualizadas con mi situación
-          académica actual.
+
+    <main id="contenido">
+      <section class="page-hero wrap" aria-labelledby="page-title">
+        <p class="kicker mono" data-intro><span>( CV )</span> Perfil</p>
+        <h1 id="page-title" class="page-title" data-proximity>Currículum</h1>
+        <p class="page-lead" data-intro>
+          Formación, experiencia y herramientas. Si lo prefieres en papel,
+          guárdalo como PDF.
         </p>
-      </section>
-      <section class="cv-layout shell">
-        <div class="cv-main">
-          <div class="cv-block">
-            <p class="eyebrow">Formación</p>
-            <h2>Estudios</h2>
-            <div class="timeline-item">
-              <span>Actualidad</span>
-              <h3>Desarrollo de Aplicaciones Web (DAW)</h3>
-              <p>IES Doctor Lluís Simarro Lacabra</p>
-            </div>
-            <div class="timeline-item">
-              <span>09/09/2024 - 21/06/2026</span>
-              <h3>Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
-              <p>IES Consuelo Aranda</p>
-            </div>
-            <div class="timeline-item">
-              <span>09/09/2022 – 22/06/2024</span>
-              <h3>Técnico en Sistemas Microinformáticos y Redes</h3>
-              <p>IES Consuelo Aranda · Alberic, España</p>
-            </div>
-            <div class="timeline-item">
-              <span>01/09/2018 – 15/06/2024</span>
-              <h3>Enseñanzas profesionales de Música</h3>
-              <p>
-                Especialidad de bombardino · Conservatori Mestre Vert ·
-                Carcaixent, España
-              </p>
-            </div>
-            <div class="timeline-item">
-              <span>01/08/2018 – 28/06/2022</span>
-              <h3>Educación Secundaria Obligatoria (ESO)</h3>
-              <p>IES Consuelo Aranda · Alberic, España</p>
-            </div>
-          </div>
-          <div class="cv-block">
-            <p class="eyebrow">Experiencia laboral</p>
-            <h2>Experiencia profesional</h2>
-            <div class="timeline-item">
-              <span>01/06/2026 – 30/11/2026 · 6 meses</span>
-              <h3>Contrato temporal</h3>
-              <p>Experiencia laboral actual</p>
-            </div>
-          </div>
-          <div class="cv-block">
-            <p class="eyebrow">Experiencia formativa</p>
-            <h2>Prácticas profesionales</h2>
-            <div class="timeline-item">
-              <span>3 meses</span>
-              <h3>
-                Prácticas de Desarrollo de Aplicaciones Multiplataforma (DAM)
-              </h3>
-              <p>OBERTA</p>
-            </div>
-            <div class="timeline-item">
-              <span>3 meses</span>
-              <h3>Prácticas de Sistemas Microinformáticos y Redes</h3>
-              <p>PIMAT</p>
-            </div>
-          </div>
-        </div>
-        <aside class="cv-sidebar">
-          <div
-            class="cv-photo"
-            role="img"
-            aria-label="Espacio reservado para una fotografía profesional"
+        <div class="hero-actions" data-intro>
+          <button type="button" class="btn btn--solid" data-print data-magnetic>
+            <span>Descargar CV en PDF</span><i aria-hidden="true">↓</i>
+          </button>
+          <a
+            class="btn btn--ghost"
+            href="mailto:enralopui@alu.edu.gva.es"
+            data-magnetic
+            ><span>Escríbeme</span></a
           >
-            <span>Fotografía profesional</span>
-          </div>
-          <div class="cv-block">
-            <p class="eyebrow">Contacto</p>
-            <h2>Datos personales</h2>
-            <ul class="detail-list">
-              <li><strong>Nombre:</strong> Enrique Alonso Puig</li>
-              <li><strong>Fecha de nacimiento:</strong> 28/08/2006</li>
-              <li><strong>Nacionalidad:</strong> española</li>
-              <li><strong>Ubicación:</strong> Alberic, España</li>
+        </div>
+      </section>
+
+      <div class="print-head" aria-hidden="true">
+        <div>
+          <p class="ph-name">Enrique Alonso Puig</p>
+          <p class="ph-role">
+            Desarrollador de aplicaciones · DAM · Estudiante de DAW
+          </p>
+        </div>
+        <p class="ph-contact">
+          enralopui@alu.edu.gva.es<br>Alberic, Valencia<br>github.com/quiquealonso
+        </p>
+      </div>
+
+      <div class="cv wrap">
+        <div class="cv-main">
+          <section class="cv-section" aria-labelledby="cv-formacion">
+            <p class="kicker mono" data-reveal="up"><span>01</span> Formación</p>
+            <h2 id="cv-formacion" class="cv-title" data-reveal="chars">
+              Estudios
+            </h2>
+            <ol class="timeline" data-timeline>
               <li>
-                <strong>Email:</strong>
-                <a href="mailto:enralopui@alu.edu.gva.es"
-                  >enralopui@alu.edu.gva.es</a
-                >
+                <span class="mono">Actualidad</span>
+                <h3>Desarrollo de Aplicaciones Web (DAW)</h3>
+                <p>IES Doctor Lluís Simarro Lacabra</p>
+              </li>
+              <li>
+                <span class="mono">09/2024 – 06/2026</span>
+                <h3>Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+                <p>IES Consuelo Aranda</p>
+              </li>
+              <li>
+                <span class="mono">09/2022 – 06/2024</span>
+                <h3>Técnico en Sistemas Microinformáticos y Redes</h3>
+                <p>IES Consuelo Aranda · Alberic</p>
+              </li>
+              <li>
+                <span class="mono">09/2018 – 06/2024</span>
+                <h3>Enseñanzas profesionales de Música</h3>
+                <p>
+                  Especialidad de bombardino · Conservatori Mestre Vert ·
+                  Carcaixent
+                </p>
+              </li>
+              <li>
+                <span class="mono">08/2018 – 06/2022</span>
+                <h3>Educación Secundaria Obligatoria (ESO)</h3>
+                <p>IES Consuelo Aranda · Alberic</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="cv-section" aria-labelledby="cv-experiencia">
+            <p class="kicker mono" data-reveal="up">
+              <span>02</span> Experiencia
+            </p>
+            <h2 id="cv-experiencia" class="cv-title" data-reveal="chars">
+              Experiencia profesional
+            </h2>
+            <ol class="timeline" data-timeline>
+              <li>
+                <span class="mono">06/2026 – 11/2026 · 6 meses</span>
+                <h3>Contrato temporal</h3>
+                <p>Oberta IT Servicios Tecnológicos</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="cv-section" aria-labelledby="cv-practicas">
+            <p class="kicker mono" data-reveal="up">
+              <span>03</span> Formación en empresa
+            </p>
+            <h2 id="cv-practicas" class="cv-title" data-reveal="chars">
+              Prácticas
+            </h2>
+            <ol class="timeline" data-timeline>
+              <li>
+                <span class="mono">3 meses</span>
+                <h3>Desarrollo de Aplicaciones Multiplataforma</h3>
+                <p>Oberta IT Servicios Tecnológicos</p>
+              </li>
+              <li>
+                <span class="mono">3 meses</span>
+                <h3>Sistemas Microinformáticos y Redes</h3>
+                <p>PIMAT</p>
+              </li>
+            </ol>
+          </section>
+        </div>
+
+        <aside class="cv-side" aria-label="Datos personales y competencias">
+          <div class="side-card side-card--byte" data-reveal="scale">
+            <div class="side-byte" data-byte="full" data-say="La foto llega pronto. ¡Mientras tanto, yo!"></div>
+            <p class="mono">Foto profesional en camino. Mientras, Enriquito.</p>
+          </div>
+
+          <div class="side-card" data-reveal="up">
+            <h2 class="side-title">Datos</h2>
+            <dl class="data-list">
+              <div><dt>Nombre</dt><dd>Enrique Alonso Puig</dd></div>
+              <div><dt>Nacimiento</dt><dd>28/08/2006</dd></div>
+              <div><dt>Nacionalidad</dt><dd>Española</dd></div>
+              <div><dt>Ubicación</dt><dd>Alberic, Valencia</dd></div>
+              <div>
+                <dt>Email</dt>
+                <dd>
+                  <a href="mailto:enralopui@alu.edu.gva.es"
+                    >enralopui@alu.edu.gva.es</a
+                  >
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="side-card" data-reveal="up">
+            <h2 class="side-title">Idiomas</h2>
+            <ul class="langs">
+              <li>
+                <span>Español</span><em>Nativo</em>
+                <i class="meter"></i>
+              </li>
+              <li>
+                <span>Valenciano</span><em>Nativo</em>
+                <i class="meter"></i>
+              </li>
+              <li>
+                <span>Inglés</span><em>B1</em>
+                <i class="meter meter--b1"></i>
               </li>
             </ul>
           </div>
-          <div class="cv-block">
-            <p class="eyebrow">Idiomas</p>
-            <h2>Competencia lingüística</h2>
-            <ul class="detail-list">
-              <li><strong>Lenguas maternas:</strong> español y valenciano</li>
-              <li><strong>Inglés:</strong> B1</li>
-            </ul>
-          </div>
-          <div class="cv-block">
-            <p class="eyebrow">Competencias digitales</p>
-            <h2>Herramientas</h2>
-            <ul class="skill-list">
+
+          <div class="side-card" data-reveal="up">
+            <h2 class="side-title">Herramientas</h2>
+            <ul class="tags" data-reveal="stagger">
+              <li>Java</li>
+              <li>JavaFX</li>
+              <li>Python</li>
+              <li>Odoo</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Git</li>
+              <li>GitHub</li>
               <li>Microsoft Office</li>
-              <li>Microsoft PowerPoint</li>
-              <li>Microsoft Word</li>
-              <li>Google Drive y Outlook</li>
-              <li>Java y JavaFX</li>
-              <li>Python y Odoo</li>
-              <li>HTML, CSS, Git y GitHub</li>
+              <li>Google Drive</li>
+              <li>Outlook</li>
             </ul>
           </div>
         </aside>
-      </section>
+      </div>
     </main>
-    <footer class="site-footer shell">
-      <p>&copy; 2026 Enrique Alonso Puig</p>
-      <a href="https://github.com/quiquealonso" target="_blank" rel="noreferrer"
-        >GitHub</a
-      >
+
+    <footer class="footer">
+      <p class="footer-name" aria-hidden="true" data-footer-name>
+        Enrique Alonso
+      </p>
+      <div class="footer-row wrap">
+        <p>&copy; 2026 Enrique Alonso Puig · Proyecto de DAW</p>
+        <p class="mono">Alberic · <span data-clock>--:--</span></p>
+        <a href="#contenido" class="link-arrow"
+          >Volver arriba <span aria-hidden="true">↑</span></a
+        >
+      </div>
     </footer>
+
     <script src="vendor/gsap.min.js" defer></script>
     <script src="vendor/ScrollTrigger.min.js" defer></script>
     <script src="vendor/SplitText.min.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script type="module" src="js/background.js"></script>
+    <script src="js/byte.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/bg.js" defer></script>
   </body>
 </html>

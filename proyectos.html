@@ -4,112 +4,276 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Proyectos · Enrique Alonso Puig</title>
+    <meta
+      name="description"
+      content="Proyectos de Enrique Alonso Puig: módulos de Odoo, una aplicación JavaFX y este portfolio animado."
+    >
+    <meta name="theme-color" content="#031314">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap"
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script>
-      var root = document.documentElement;
-      var viaLink = false;
-      root.classList.add("js");
-      try {
-        viaLink = Boolean(sessionStorage.getItem("pt"));
-        sessionStorage.removeItem("pt");
-      } catch (error) {}
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        root.classList.add(viaLink ? "is-entering" : "is-loading");
-      }
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var t = null;
+        try {
+          t = localStorage.getItem("ea-theme");
+        } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark";
+        }
+        d.setAttribute("data-theme", t);
+        try {
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          var s = sessionStorage;
+          if (s.getItem("ea-nav")) {
+            d.classList.add("is-entering");
+            s.removeItem("ea-nav");
+          } else if (!s.getItem("ea-seen")) {
+            d.classList.add("is-loading");
+            s.setItem("ea-seen", "1");
+          }
+        } catch (e) {}
+      })();
     </script>
   </head>
-  <body>
+  <body data-page="proyectos">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
-      <nav class="site-nav shell" aria-label="Navegación principal">
-        <a class="brand" href="index.html"
-          >Enrique Alonso Puig<span>Desarrollo de aplicaciones</span></a
-        >
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="logo" href="index.html" aria-label="Inicio, Enrique Alonso">
+          <span class="logo-byte" data-byte="head"></span>
+          <span class="logo-text">enrique<b>.</b>alonso</span>
+        </a>
         <div class="nav-links">
-          <a class="active" href="proyectos.html" aria-current="page"
-            >Proyectos</a
-          ><a href="cv.html">CV</a
-          ><a class="nav-contact" href="mailto:enralopui@alu.edu.gva.es"
-            >Contacto</a
+          <a class="roll" href="index.html"
+            ><span data-text="Inicio">Inicio</span></a
           >
+          <a class="roll is-active" href="proyectos.html" aria-current="page"
+            ><span data-text="Proyectos">Proyectos</span></a
+          >
+          <a class="roll" href="cv.html"><span data-text="CV">CV</span></a>
+        </div>
+        <div class="nav-end">
+          <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+            data-magnetic
+            aria-label="Activar modo claro"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <mask id="tt-moon">
+                <rect width="24" height="24" fill="#fff" />
+                <circle class="tt-bite" cx="24" cy="4" r="6" fill="#000" />
+              </mask>
+              <circle class="tt-core" cx="12" cy="12" r="5" mask="url(#tt-moon)" />
+              <path
+                class="tt-rays"
+                d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+              />
+            </svg>
+          </button>
+          <a class="nav-status" href="index.html#contacto" data-magnetic>
+            <i aria-hidden="true"></i>Disponible
+          </a>
         </div>
       </nav>
     </header>
-    <main>
-      <section class="page-intro shell">
-        <p class="eyebrow">Trabajo seleccionado</p>
-        <h1>Proyectos</h1>
-        <p>
-          Una selección de trabajos en los que he practicado desarrollo de
-          aplicaciones, modelado de datos, interfaces y organización de código.
+
+    <main id="contenido">
+      <section class="page-hero wrap" aria-labelledby="page-title">
+        <p class="kicker mono" data-intro><span>( 03 )</span> Trabajo</p>
+        <h1 id="page-title" class="page-title" data-proximity>Proyectos</h1>
+        <p class="page-lead" data-intro>
+          Tres proyectos, tres mundos: gestión empresarial con Odoo, una
+          aplicación de escritorio en Java y la web que estás viendo.
         </p>
       </section>
-      <section class="projects-grid shell" aria-label="Proyectos destacados">
-        <article class="project-card">
-          <div class="project-meta">
-            <span>01 / Odoo</span><span>Python</span>
+
+      <section class="cases" aria-label="Casos de estudio">
+        <article class="case wrap" aria-labelledby="p1">
+          <div class="case-visual" data-parallax>
+            <div class="mock mock--kanban mock--big" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>Odoo · Vuelos</span>
+              </div>
+              <div class="kanban">
+                <div class="col">
+                  <b>Pendiente</b><i class="k-ghost"></i><i>DRN-07</i
+                  ><i>DRN-09</i>
+                </div>
+                <div class="col"><b>En vuelo</b><i>DRN-01</i><i>DRN-04</i></div>
+                <div class="col">
+                  <b>Entregado</b><i>DRN-02</i><i>DRN-05</i>
+                </div>
+              </div>
+              <i class="kanban-moving">DRN-03 ✈</i>
+            </div>
           </div>
-          <h2>odooQuique</h2>
-          <p>
-            Desarrollo de módulos para Odoo orientados a la gestión de una
-            operativa de drones. El proyecto trabaja con modelos y relaciones
-            entre drones, vuelos, paquetes, clientes y pilotos.
-          </p>
-          <ul class="tag-list">
-            <li>Modelos y relaciones</li>
-            <li>Vistas y formularios</li>
-            <li>Validaciones</li>
-          </ul>
-          <a
-            class="text-link"
-            href="https://github.com/quiquealonso/odooQuique"
-            target="_blank"
-            rel="noreferrer"
-            >Ver repositorio <span aria-hidden="true">↗</span></a
-          >
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">01 — Odoo · Python</p>
+            <h2 id="p1" class="case-title" data-reveal="chars">odooQuique</h2>
+            <p data-reveal="up">
+              Módulos para Odoo pensados para gestionar una empresa de reparto
+              con drones. El reto era modelar bien los datos: qué dron hace
+              qué vuelo, qué paquetes lleva, para qué cliente y con qué piloto.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div><dt>Qué hice</dt><dd>Modelos y relaciones entre drones, vuelos, paquetes, clientes y pilotos</dd></div>
+              <div><dt>Interfaz</dt><dd>Vistas y formularios de Odoo</dd></div>
+              <div><dt>Calidad</dt><dd>Validaciones sobre los datos</dd></div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://github.com/quiquealonso/odooQuique"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Ver repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
         </article>
-        <article class="project-card">
-          <div class="project-meta">
-            <span>02 / Aplicación de escritorio</span><span>Java 21</span>
+
+        <article class="case case--flip wrap" aria-labelledby="p2">
+          <div class="case-visual" data-parallax>
+            <div class="mock mock--cards mock--big" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>Gestor de Cromos</span>
+              </div>
+              <div class="filters">
+                <i class="is-on">2024</i><i>Liga</i><i>Delanteros</i
+                ><i>Valor ↓</i>
+              </div>
+              <div class="cromos">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
           </div>
-          <h2>Gestor de Cromos</h2>
-          <p>
-            Aplicación desarrollada con JavaFX para gestionar y visualizar
-            colecciones de cromos de fútbol. Permite filtrar por años, equipos y
-            categorías, además de consultar estadísticas y valor de mercado.
-          </p>
-          <ul class="tag-list">
-            <li>JavaFX</li>
-            <li>Maven / Gradle</li>
-            <li>MkDocs</li>
-          </ul>
-          <div class="project-links">
-            <a
-              class="text-link"
-              href="https://github.com/quiquealonso/GestorCromos"
-              target="_blank"
-              rel="noreferrer"
-              >Ver repositorio <span aria-hidden="true">↗</span></a
-            ><a
-              class="text-link"
-              href="https://quiquealonso.github.io/GestorCromos/"
-              target="_blank"
-              rel="noreferrer"
-              >Ver documentación <span aria-hidden="true">↗</span></a
-            >
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">
+              02 — Escritorio · Java 21
+            </p>
+            <h2 id="p2" class="case-title" data-reveal="chars">
+              Gestor de Cromos
+            </h2>
+            <p data-reveal="up">
+              Una aplicación de escritorio para coleccionistas de cromos de
+              fútbol. Permite organizar la colección, filtrar por años, equipos
+              y categorías, y consultar estadísticas y valor de mercado.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div><dt>Interfaz</dt><dd>JavaFX</dd></div>
+              <div><dt>Construcción</dt><dd>Maven y Gradle</dd></div>
+              <div><dt>Documentación</dt><dd>Sitio publicado con MkDocs</dd></div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://github.com/quiquealonso/GestorCromos"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Repositorio</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://quiquealonso.github.io/GestorCromos/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Leer"
+                ><span>Documentación</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="case wrap" aria-labelledby="p3">
+          <div class="case-visual" data-parallax>
+            <div class="mock mock--site mock--big" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>quiquealonso.github.io</span>
+              </div>
+              <div class="site-mini">
+                <i class="sm-blob"></i>
+                <b>Enrique<br>Alonso</b>
+                <span class="sm-checks"
+                  ><i>✓ HTML</i><i>✓ Enlaces</i><i>✓ Formato</i
+                  ><i>✓ Lighthouse</i></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">03 — Web · DAW</p>
+            <h2 id="p3" class="case-title" data-reveal="chars">
+              Este portfolio
+            </h2>
+            <p data-reveal="up">
+              Proyecto del ciclo de DAW y mi carta de presentación. Sin
+              frameworks: HTML semántico, CSS propio, animaciones con GSAP y un
+              fondo líquido programado como shader de WebGL.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div><dt>Animación</dt><dd>GSAP, ScrollTrigger y SplitText</dd></div>
+              <div><dt>Gráficos</dt><dd>Shader WebGL y SVG animado</dd></div>
+              <div><dt>Calidad</dt><dd>GitHub Actions: html-validate, lychee, Prettier y Lighthouse</dd></div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://github.com/quiquealonso/portfolioQ"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Ver repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
           </div>
         </article>
       </section>
+
+      <section class="next-cta wrap" aria-labelledby="next-title">
+        <h2 id="next-title" class="contact-title" data-reveal="chars">
+          ¿El siguiente lo hacemos juntos?
+        </h2>
+        <a class="btn btn--solid" href="index.html#contacto" data-magnetic
+          ><span>Contactar</span><i aria-hidden="true">→</i></a
+        >
+      </section>
     </main>
-    <footer class="site-footer shell">
-      <p>&copy; 2026 Enrique Alonso Puig</p>
-      <a href="https://github.com/quiquealonso" target="_blank" rel="noreferrer"
-        >GitHub</a
-      >
+
+    <footer class="footer">
+      <p class="footer-name" aria-hidden="true" data-footer-name>
+        Enrique Alonso
+      </p>
+      <div class="footer-row wrap">
+        <p>&copy; 2026 Enrique Alonso Puig · Proyecto de DAW</p>
+        <p class="mono">Alberic · <span data-clock>--:--</span></p>
+        <a href="#contenido" class="link-arrow"
+          >Volver arriba <span aria-hidden="true">↑</span></a
+        >
+      </div>
     </footer>
+
     <script src="vendor/gsap.min.js" defer></script>
     <script src="vendor/ScrollTrigger.min.js" defer></script>
     <script src="vendor/SplitText.min.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script type="module" src="js/background.js"></script>
+    <script src="js/byte.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/bg.js" defer></script>
   </body>
 </html>
