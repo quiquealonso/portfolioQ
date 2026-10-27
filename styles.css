@@ -1819,6 +1819,16 @@ svg {
   top: 8.5rem;
 }
 
+.stack-card:nth-child(4) {
+  --tone: var(--tone-2);
+  top: 9.5rem;
+}
+
+.stack-card:nth-child(5) {
+  --tone: var(--tone-3);
+  top: 10.5rem;
+}
+
 .stack-num {
   color: var(--accent-text);
 }
@@ -2143,6 +2153,83 @@ svg {
 }
 .sm-checks i:nth-child(4) {
   animation-delay: 0.75s !important;
+}
+
+/* Trío de móviles con capturas reales */
+.phones {
+  position: relative;
+  display: grid;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+}
+
+.phone {
+  position: absolute;
+  width: 33%;
+  margin: 0;
+  overflow: hidden;
+  border: 6px solid #0a1517;
+  border-radius: 30px;
+  background: #0a1517;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Las capturas de Stockly ya traen marco: se recorta para no duplicarlo */
+.phones--stockly .phone img {
+  transform: scale(1.08);
+}
+
+.phone--c {
+  z-index: 2;
+  transform: translateY(-3%);
+}
+
+.phone--l {
+  transform: translateX(-62%) rotate(-9deg) scale(0.86);
+}
+
+.phone--r {
+  transform: translateX(62%) rotate(9deg) scale(0.86);
+}
+
+.stack-card:hover .phone--l,
+.case:hover .phone--l {
+  transform: translateX(-78%) rotate(-13deg) scale(0.88);
+}
+
+.stack-card:hover .phone--r,
+.case:hover .phone--r {
+  transform: translateX(78%) rotate(13deg) scale(0.88);
+}
+
+.stack-card:hover .phone--c,
+.case:hover .phone--c {
+  transform: translateY(-6%) scale(1.03);
+}
+
+.phones.is-in .phone {
+  animation: phone-bob 5s ease-in-out infinite;
+}
+
+.phones.is-in .phone--l {
+  animation-delay: -1.6s;
+}
+
+.phones.is-in .phone--r {
+  animation-delay: -3.2s;
+}
+
+@keyframes phone-bob {
+  50% {
+    translate: 0 -12px;
+  }
 }
 
 /* ---------- Trayectoria ---------- */

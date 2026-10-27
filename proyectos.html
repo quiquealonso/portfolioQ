@@ -6,7 +6,7 @@
     <title>Proyectos · Enrique Alonso Puig</title>
     <meta
       name="description"
-      content="Proyectos de Enrique Alonso Puig: módulos de Odoo, una aplicación JavaFX y este portfolio animado."
+      content="Proyectos de Enrique Alonso Puig: apps móviles con Angular y Supabase, módulos de Odoo, una aplicación JavaFX y este portfolio animado."
     >
     <meta name="theme-color" content="#031314">
     <link
@@ -90,16 +90,237 @@
 
     <main id="contenido">
       <section class="page-hero wrap" aria-labelledby="page-title">
-        <p class="kicker mono" data-intro><span>( 03 )</span> Trabajo</p>
+        <p class="kicker mono" data-intro><span>( 05 )</span> Trabajo</p>
         <h1 id="page-title" class="page-title" data-proximity>Proyectos</h1>
         <p class="page-lead" data-intro>
-          Tres proyectos, tres mundos: gestión empresarial con Odoo, una
-          aplicación de escritorio en Java y la web que estás viendo.
+          Cinco proyectos: dos apps móviles conectadas a Supabase, gestión
+          empresarial con Odoo, una aplicación de escritorio en Java y la web
+          que estás viendo.
         </p>
       </section>
 
       <section class="cases" aria-label="Casos de estudio">
         <article class="case wrap" aria-labelledby="p1">
+          <div class="case-visual" data-parallax>
+            <div class="phones phones--big phones--stockly">
+              <figure class="phone phone--l">
+                <img
+                  src="https://quiquealonso.github.io/stockly/assets/capturas/proveedor.jpg"
+                  alt="Stockly: proveedor con su pedido favorito"
+                  width="380"
+                  height="680"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <figure class="phone phone--c">
+                <img
+                  src="https://quiquealonso.github.io/stockly/assets/capturas/stock.jpg"
+                  alt="Stockly: pantalla de stock con botones para sumar y restar"
+                  width="380"
+                  height="680"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <figure class="phone phone--r">
+                <img
+                  src="https://quiquealonso.github.io/stockly/assets/capturas/control.jpg"
+                  alt="Stockly: historial de movimientos"
+                  width="380"
+                  height="680"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+            </div>
+          </div>
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">
+              01 — Móvil · Angular + Supabase
+            </p>
+            <h2 id="p1" class="case-title" data-reveal="chars">Stockly</h2>
+            <p data-reveal="up">
+              Control de stock para restaurantes y empresas de eventos, pensado
+              para usarlo con una mano: botones −/+ grandes, filtro de productos
+              bajo mínimos, pedidos favoritos que se suman al stock de una vez y
+              eventos que descuentan el consumo en un solo paso. Si dos personas
+              tocan el mismo producto a la vez, no se pisan.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div>
+                <dt>Qué hace</dt>
+                <dd>
+                  Stock, proveedores, pedidos favoritos, eventos e historial de
+                  cada movimiento
+                </dd>
+              </div>
+              <div>
+                <dt>Tecnología</dt>
+                <dd>
+                  Angular 22 con signals, Supabase (PostgreSQL y Auth) y
+                  Capacitor para la app de Android
+                </dd>
+              </div>
+              <div>
+                <dt>Sin backend</dt>
+                <dd>
+                  Seguridad en la base de datos: RLS para el personal, funciones
+                  atómicas y un trigger que guarda el historial
+                </dd>
+              </div>
+              <div>
+                <dt>Extra</dt>
+                <dd>
+                  Demo con datos ficticios y vídeo grabado automáticamente con
+                  Playwright
+                </dd>
+              </div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://quiquealonso.github.io/stockly/demo/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Probar"
+                ><span>Demo en vivo</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://quiquealonso.github.io/stockly/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Ver"
+                ><span>Web y vídeo</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://github.com/quiquealonso/stockly"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="case case--flip wrap" aria-labelledby="p2">
+          <div class="case-visual" data-parallax>
+            <div class="phones phones--big phones--campos">
+              <figure class="phone phone--l">
+                <img
+                  src="https://quiquealonso.github.io/gestor-campos/assets/capturas/campo.jpg"
+                  alt="Gestor Campos: detalle de un campo"
+                  width="356"
+                  height="656"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <figure class="phone phone--c">
+                <img
+                  src="https://quiquealonso.github.io/gestor-campos/assets/capturas/campos.jpg"
+                  alt="Gestor Campos: resumen de gastos, ingresos y beneficio de los campos"
+                  width="356"
+                  height="656"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+              <figure class="phone phone--r">
+                <img
+                  src="https://quiquealonso.github.io/gestor-campos/assets/capturas/entre-anios.jpg"
+                  alt="Gestor Campos: comparación de varias campañas"
+                  width="356"
+                  height="656"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+            </div>
+          </div>
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">
+              02 — Móvil y escritorio · Angular + Supabase
+            </p>
+            <h2 id="p2" class="case-title" data-reveal="chars">
+              Gestor Campos
+            </h2>
+            <p data-reveal="up">
+              Las cuentas de cada campo agrícola por campaña: gastos, cheques de
+              la cosecha, beneficio por hanegada y lo que aún queda por pagar.
+              Un gasto común se reparte entre todos los campos según su tamaño,
+              cuadrando al céntimo, y las estadísticas comparan un año con
+              otro.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div>
+                <dt>Qué hace</dt>
+                <dd>
+                  Campos, pagos, ingresos, pagos conjuntos y estadísticas por año
+                  y entre años
+                </dd>
+              </div>
+              <div>
+                <dt>Tecnología</dt>
+                <dd>
+                  Angular 20 y PrimeNG, Supabase, Capacitor para Android y
+                  Electron para Windows
+                </dd>
+              </div>
+              <div>
+                <dt>Sin backend</dt>
+                <dd>
+                  RLS por propietario, funciones SQL en una sola transacción y
+                  validación con restricciones CHECK
+                </dd>
+              </div>
+              <div>
+                <dt>Extra</dt>
+                <dd>
+                  Demo con datos ficticios y vídeo grabado automáticamente con
+                  Playwright
+                </dd>
+              </div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://quiquealonso.github.io/gestor-campos/demo/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Probar"
+                ><span>Demo en vivo</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://quiquealonso.github.io/gestor-campos/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Ver"
+                ><span>Documentación y vídeo</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://github.com/quiquealonso/gestor-campos"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="case wrap" aria-labelledby="p3">
           <div class="case-visual" data-parallax>
             <div class="mock mock--kanban mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -119,8 +340,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">01 — Odoo · Python</p>
-            <h2 id="p1" class="case-title" data-reveal="chars">odooQuique</h2>
+            <p class="mono case-num" data-reveal="up">03 — Odoo · Python</p>
+            <h2 id="p3" class="case-title" data-reveal="chars">odooQuique</h2>
             <p data-reveal="up">
               Módulos para Odoo pensados para gestionar una empresa de reparto
               con drones. El reto era modelar bien los datos: qué dron hace
@@ -145,7 +366,7 @@
           </div>
         </article>
 
-        <article class="case case--flip wrap" aria-labelledby="p2">
+        <article class="case case--flip wrap" aria-labelledby="p4">
           <div class="case-visual" data-parallax>
             <div class="mock mock--cards mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -162,9 +383,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              02 — Escritorio · Java 21
+              04 — Escritorio · Java 21
             </p>
-            <h2 id="p2" class="case-title" data-reveal="chars">
+            <h2 id="p4" class="case-title" data-reveal="chars">
               Gestor de Cromos
             </h2>
             <p data-reveal="up">
@@ -200,7 +421,7 @@
           </div>
         </article>
 
-        <article class="case wrap" aria-labelledby="p3">
+        <article class="case wrap" aria-labelledby="p5">
           <div class="case-visual" data-parallax>
             <div class="mock mock--site mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -217,8 +438,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">03 — Web · DAW</p>
-            <h2 id="p3" class="case-title" data-reveal="chars">
+            <p class="mono case-num" data-reveal="up">05 — Web · DAW</p>
+            <h2 id="p5" class="case-title" data-reveal="chars">
               Este portfolio
             </h2>
             <p data-reveal="up">

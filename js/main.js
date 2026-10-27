@@ -123,7 +123,7 @@
   );
 
   // Las animaciones CSS de maquetas y tarjetas solo corren cuando se ven.
-  const watched = $(".mock, .tile, .langs, .orbit, .eq");
+  const watched = $(".mock, .phones, .tile, .langs, .orbit, .eq");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) =>
@@ -629,7 +629,10 @@
           () => {
             if (!window.Byte) return;
             window.Byte.wave(peek);
-            window.Byte.say(peek, "¡Hola! Soy Enriquito, el ayudante de Enrique.");
+            window.Byte.say(
+              peek,
+              "¡Hola! Soy Enriquito, el ayudante de Enrique.",
+            );
           },
           null,
           2.3,
