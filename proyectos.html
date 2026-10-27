@@ -6,7 +6,7 @@
     <title>Proyectos · Enrique Alonso Puig</title>
     <meta
       name="description"
-      content="Proyectos de Enrique Alonso Puig: apps móviles con Angular y Supabase, módulos de Odoo, una aplicación JavaFX y este portfolio animado."
+      content="Proyectos de Enrique Alonso Puig: apps móviles con Angular y Supabase, una plataforma de pedidos con Spring Boot, módulos de Odoo, una aplicación JavaFX y este portfolio animado."
     >
     <meta name="theme-color" content="#031314">
     <link
@@ -90,12 +90,12 @@
 
     <main id="contenido">
       <section class="page-hero wrap" aria-labelledby="page-title">
-        <p class="kicker mono" data-intro><span>( 05 )</span> Trabajo</p>
+        <p class="kicker mono" data-intro><span>( 06 )</span> Trabajo</p>
         <h1 id="page-title" class="page-title" data-proximity>Proyectos</h1>
         <p class="page-lead" data-intro>
-          Cinco proyectos: dos apps móviles conectadas a Supabase, gestión
-          empresarial con Odoo, una aplicación de escritorio en Java y la web
-          que estás viendo.
+          Seis proyectos: dos apps móviles conectadas a Supabase, una
+          plataforma de pedidos con Spring Boot, gestión empresarial con Odoo,
+          una aplicación de escritorio en Java y la web que estás viendo.
         </p>
       </section>
 
@@ -322,6 +322,93 @@
 
         <article class="case wrap" aria-labelledby="p3">
           <div class="case-visual" data-parallax>
+            <div class="mock mock--bakery mock--big" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>PanGestión · Producción del día</span>
+              </div>
+              <div class="bakery">
+                <div class="bk-kpis">
+                  <b><em>12</em>pendientes</b><b><em>5</em>en proceso</b
+                  ><b><em>8</em>recogidas hoy</b>
+                </div>
+                <div class="bk-grid">
+                  <span></span><span class="bk-h">8:00</span
+                  ><span class="bk-h">9:00</span><span class="bk-h">10:00</span
+                  ><span class="bk-h">11:00</span>
+                  <span class="bk-p">Barra</span><i>6</i><i>4</i><i>9</i
+                  ><i>3</i>
+                  <span class="bk-p">Croissant</span><i>12</i><i>8</i><i>5</i
+                  ><i>2</i>
+                  <span class="bk-p">Coca</span><i>2</i><i>3</i><i>1</i
+                  ><i>4</i>
+                  <span class="bk-p">Pizza</span><i>0</i><i>2</i><i>3</i
+                  ><i>6</i>
+                </div>
+                <div class="bk-states">
+                  <i class="bk-st bk-st--pend">Pendiente</i
+                  ><i class="bk-st bk-st--proc">En proceso</i
+                  ><i class="bk-st bk-st--ok">Listo</i>
+                </div>
+              </div>
+              <i class="bk-toast">Nuevo pedido · recogida 10:30</i>
+            </div>
+          </div>
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">
+              03 — Web · Angular + Spring Boot
+            </p>
+            <h2 id="p3" class="case-title" data-reveal="chars">PanGestión</h2>
+            <p data-reveal="up">
+              Plataforma de pedidos y gestión para panaderías, bares y
+              restaurantes. Cada negocio tiene su propio panel, y sus clientes
+              piden desde una web pública pensada para el móvil y para
+              cualquier edad: un asistente de cinco pasos con botones grandes
+              que termina con el número de pedido. En el obrador, la tabla de
+              producción del día se actualiza sola.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div>
+                <dt>Panel</dt>
+                <dd>
+                  Pedidos por día y estado, producción por franja horaria,
+                  catálogo con alérgenos, clientes y usuarios con roles
+                </dd>
+              </div>
+              <div>
+                <dt>Web pública</dt>
+                <dd>
+                  Negocio, productos, quitar ingredientes, datos y hora de
+                  recogida, sin necesidad de cuenta
+                </dd>
+              </div>
+              <div>
+                <dt>Backend</dt>
+                <dd>
+                  Java 21, Spring Boot 4, Spring Data JPA con Hibernate y Spring
+                  Security con JWT
+                </dd>
+              </div>
+              <div>
+                <dt>Datos</dt>
+                <dd>H2 en desarrollo o PostgreSQL con Docker Compose</dd>
+              </div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://github.com/quiquealonso/PanGestion"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Ver repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="case case--flip wrap" aria-labelledby="p4">
+          <div class="case-visual" data-parallax>
             <div class="mock mock--kanban mock--big" aria-hidden="true">
               <div class="mock-bar">
                 <i></i><i></i><i></i><span>Odoo · Vuelos</span>
@@ -340,8 +427,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">03 — Odoo · Python</p>
-            <h2 id="p3" class="case-title" data-reveal="chars">odooQuique</h2>
+            <p class="mono case-num" data-reveal="up">04 — Odoo · Python</p>
+            <h2 id="p4" class="case-title" data-reveal="chars">odooQuique</h2>
             <p data-reveal="up">
               Módulos para Odoo pensados para gestionar una empresa de reparto
               con drones. El reto era modelar bien los datos: qué dron hace
@@ -366,7 +453,7 @@
           </div>
         </article>
 
-        <article class="case case--flip wrap" aria-labelledby="p4">
+        <article class="case wrap" aria-labelledby="p5">
           <div class="case-visual" data-parallax>
             <div class="mock mock--cards mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -383,9 +470,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              04 — Escritorio · Java 21
+              05 — Escritorio · Java 21
             </p>
-            <h2 id="p4" class="case-title" data-reveal="chars">
+            <h2 id="p5" class="case-title" data-reveal="chars">
               Gestor de Cromos
             </h2>
             <p data-reveal="up">
@@ -421,7 +508,7 @@
           </div>
         </article>
 
-        <article class="case wrap" aria-labelledby="p5">
+        <article class="case case--flip wrap" aria-labelledby="p6">
           <div class="case-visual" data-parallax>
             <div class="mock mock--site mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -438,8 +525,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">05 — Web · DAW</p>
-            <h2 id="p5" class="case-title" data-reveal="chars">
+            <p class="mono case-num" data-reveal="up">06 — Web · DAW</p>
+            <h2 id="p6" class="case-title" data-reveal="chars">
               Este portfolio
             </h2>
             <p data-reveal="up">
