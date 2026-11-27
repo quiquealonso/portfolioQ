@@ -6,7 +6,7 @@
     <title>Proyectos · Enrique Alonso Puig</title>
     <meta
       name="description"
-      content="Proyectos de Enrique Alonso Puig: apps móviles con Angular y Supabase, una plataforma de pedidos con Spring Boot, módulos de Odoo, una aplicación JavaFX y este portfolio animado."
+      content="Proyectos de Enrique Alonso Puig: una app de inversiones con IA, apps móviles con Angular y Supabase, una plataforma de pedidos con Spring Boot, módulos de Odoo, una aplicación JavaFX y este portfolio animado."
     >
     <meta name="theme-color" content="#031314">
     <link
@@ -90,17 +90,135 @@
 
     <main id="contenido">
       <section class="page-hero wrap" aria-labelledby="page-title">
-        <p class="kicker mono" data-intro><span>( 06 )</span> Trabajo</p>
+        <p class="kicker mono" data-intro><span>( 07 )</span> Trabajo</p>
         <h1 id="page-title" class="page-title" data-proximity>Proyectos</h1>
         <p class="page-lead" data-intro>
-          Seis proyectos: dos apps móviles conectadas a Supabase, una
-          plataforma de pedidos con Spring Boot, gestión empresarial con Odoo,
-          una aplicación de escritorio en Java y la web que estás viendo.
+          Siete proyectos: una app de inversiones con IA, dos apps móviles
+          conectadas a Supabase, una plataforma de pedidos con Spring Boot,
+          gestión empresarial con Odoo, una aplicación de escritorio en Java y
+          la web que estás viendo.
         </p>
       </section>
 
       <section class="cases" aria-label="Casos de estudio">
         <article class="case wrap" aria-labelledby="p1">
+          <div class="case-visual" data-parallax>
+            <div class="mock mock--finance mock--big" aria-hidden="true">
+              <div class="mock-bar">
+                <i></i><i></i><i></i><span>Finanzas · Resumen</span>
+              </div>
+              <div class="fin">
+                <div class="fin-kpis">
+                  <b><em>48.230 €</em>patrimonio</b
+                  ><b><em class="fin-up">+8,4 %</em>TTWROR anual</b
+                  ><b><em class="fin-up">+7,9 %</em>TIR anual</b>
+                </div>
+                <svg
+                  class="fin-chart"
+                  viewBox="0 0 300 110"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    class="fin-area"
+                    d="M0 96 C20 90 35 92 50 80 S80 70 100 72 S135 55 150 58 S185 40 200 44 S235 25 250 30 S285 12 300 14 V110 H0 Z"
+                  />
+                  <path
+                    class="fin-invested"
+                    d="M0 98 L50 88 L100 78 L150 66 L200 55 L250 45 L300 36"
+                  />
+                  <path
+                    class="fin-value"
+                    d="M0 96 C20 90 35 92 50 80 S80 70 100 72 S135 55 150 58 S185 40 200 44 S235 25 250 30 S285 12 300 14"
+                  />
+                </svg>
+                <div class="fin-cal">
+                  <i class="g"></i><i class="g"></i><i class="r"></i
+                  ><i class="g"></i><i></i><i class="g"></i><i class="r"></i
+                  ><i class="r"></i><i class="g"></i><i class="g"></i
+                  ><i class="g"></i><i></i><i class="r"></i><i class="g"></i
+                  ><i class="g"></i><i class="r"></i><i class="g"></i
+                  ><i class="g"></i><i class="g"></i><i></i><i class="g"></i
+                  ><i class="r"></i><i class="g"></i><i class="g"></i
+                  ><i class="r"></i><i class="g"></i><i class="g"></i
+                  ><i class="g"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-info">
+            <p class="mono case-num" data-reveal="up">
+              01 — Web · Angular + Express + Supabase
+            </p>
+            <h2 id="p1" class="case-title" data-reveal="chars">Finanzas</h2>
+            <p data-reveal="up">
+              Una app para seguir todas las inversiones en un mismo sitio:
+              fondos, acciones, ETFs, cripto y cuentas de varios bancos. Calcula
+              la rentabilidad de verdad, no solo «valor menos coste», apunta los
+              movimientos leyendo los correos del banco y ayuda a decidir con
+              datos públicos. Nació como app personal y es también un proyecto
+              de clase.
+            </p>
+            <dl class="facts" data-reveal="stagger">
+              <div>
+                <dt>Seguimiento</dt>
+                <dd>
+                  Patrimonio, TTWROR y TIR, calendario de ganancias,
+                  comparación con índices y objetivos con simulación Monte Carlo
+                </dd>
+              </div>
+              <div>
+                <dt>Sin teclear</dt>
+                <dd>
+                  Importa los movimientos de los correos del banco (Gmail, solo
+                  lectura) y actualiza los precios automáticamente
+                </dd>
+              </div>
+              <div>
+                <dt>Con IA</dt>
+                <dd>
+                  Test de perfil de riesgo y buscador de fondos de la CNMV con
+                  Google Gemini, además del sentimiento de mercado
+                </dd>
+              </div>
+              <div>
+                <dt>Tecnología</dt>
+                <dd>
+                  Angular 21, Node.js con Express y TypeScript, Prisma y
+                  PostgreSQL en Supabase con row level security
+                </dd>
+              </div>
+              <div>
+                <dt>Seguridad</dt>
+                <dd>
+                  BCrypt, JWT, límite de intentos de login y CI con Gitleaks, npm
+                  audit y OSV-Scanner
+                </dd>
+              </div>
+            </dl>
+            <div class="links" data-reveal="up">
+              <a
+                class="btn btn--solid"
+                href="https://quiquealonso.github.io/finanzas/"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Probar"
+                ><span>Demo guiada</span><i aria-hidden="true">↗</i></a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://github.com/quiquealonso/finanzas"
+                target="_blank"
+                rel="noreferrer"
+                data-magnetic
+                data-cursor="Abrir"
+                ><span>Repositorio</span><i aria-hidden="true">↗</i></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="case case--flip wrap" aria-labelledby="p2">
           <div class="case-visual" data-parallax>
             <div class="phones phones--big phones--stockly">
               <figure class="phone phone--l">
@@ -137,9 +255,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              01 — Móvil · Angular + Supabase
+              02 — Móvil · Angular + Supabase
             </p>
-            <h2 id="p1" class="case-title" data-reveal="chars">Stockly</h2>
+            <h2 id="p2" class="case-title" data-reveal="chars">Stockly</h2>
             <p data-reveal="up">
               Control de stock para restaurantes y empresas de eventos, pensado
               para usarlo con una mano: botones −/+ grandes, filtro de productos
@@ -209,7 +327,7 @@
           </div>
         </article>
 
-        <article class="case case--flip wrap" aria-labelledby="p2">
+        <article class="case wrap" aria-labelledby="p3">
           <div class="case-visual" data-parallax>
             <div class="phones phones--big phones--campos">
               <figure class="phone phone--l">
@@ -246,9 +364,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              02 — Móvil y escritorio · Angular + Supabase
+              03 — Móvil y escritorio · Angular + Supabase
             </p>
-            <h2 id="p2" class="case-title" data-reveal="chars">
+            <h2 id="p3" class="case-title" data-reveal="chars">
               Gestor Campos
             </h2>
             <p data-reveal="up">
@@ -320,7 +438,7 @@
           </div>
         </article>
 
-        <article class="case wrap" aria-labelledby="p3">
+        <article class="case case--flip wrap" aria-labelledby="p4">
           <div class="case-visual" data-parallax>
             <div class="mock mock--bakery mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -355,9 +473,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              03 — Web · Angular + Spring Boot
+              04 — Web · Angular + Spring Boot
             </p>
-            <h2 id="p3" class="case-title" data-reveal="chars">PanGestión</h2>
+            <h2 id="p4" class="case-title" data-reveal="chars">PanGestión</h2>
             <p data-reveal="up">
               Plataforma de pedidos y gestión para panaderías, bares y
               restaurantes. Cada negocio tiene su propio panel, y sus clientes
@@ -407,7 +525,7 @@
           </div>
         </article>
 
-        <article class="case case--flip wrap" aria-labelledby="p4">
+        <article class="case wrap" aria-labelledby="p5">
           <div class="case-visual" data-parallax>
             <div class="mock mock--kanban mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -427,8 +545,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">04 — Odoo · Python</p>
-            <h2 id="p4" class="case-title" data-reveal="chars">odooQuique</h2>
+            <p class="mono case-num" data-reveal="up">05 — Odoo · Python</p>
+            <h2 id="p5" class="case-title" data-reveal="chars">odooQuique</h2>
             <p data-reveal="up">
               Módulos para Odoo pensados para gestionar una empresa de reparto
               con drones. El reto era modelar bien los datos: qué dron hace
@@ -453,7 +571,7 @@
           </div>
         </article>
 
-        <article class="case wrap" aria-labelledby="p5">
+        <article class="case case--flip wrap" aria-labelledby="p6">
           <div class="case-visual" data-parallax>
             <div class="mock mock--cards mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -470,9 +588,9 @@
           </div>
           <div class="case-info">
             <p class="mono case-num" data-reveal="up">
-              05 — Escritorio · Java 21
+              06 — Escritorio · Java 21
             </p>
-            <h2 id="p5" class="case-title" data-reveal="chars">
+            <h2 id="p6" class="case-title" data-reveal="chars">
               Gestor de Cromos
             </h2>
             <p data-reveal="up">
@@ -508,7 +626,7 @@
           </div>
         </article>
 
-        <article class="case case--flip wrap" aria-labelledby="p6">
+        <article class="case wrap" aria-labelledby="p7">
           <div class="case-visual" data-parallax>
             <div class="mock mock--site mock--big" aria-hidden="true">
               <div class="mock-bar">
@@ -525,8 +643,8 @@
             </div>
           </div>
           <div class="case-info">
-            <p class="mono case-num" data-reveal="up">06 — Web · DAW</p>
-            <h2 id="p6" class="case-title" data-reveal="chars">
+            <p class="mono case-num" data-reveal="up">07 — Web · DAW</p>
+            <h2 id="p7" class="case-title" data-reveal="chars">
               Este portfolio
             </h2>
             <p data-reveal="up">
