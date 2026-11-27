@@ -1834,6 +1834,11 @@ svg {
   top: 11.5rem;
 }
 
+.stack-card:nth-child(7) {
+  --tone: var(--tone-2);
+  top: 12.5rem;
+}
+
 .stack-num {
   color: var(--accent-text);
 }
@@ -2158,6 +2163,164 @@ svg {
 }
 .sm-checks i:nth-child(4) {
   animation-delay: 0.75s !important;
+}
+
+/* Maqueta de Finanzas: resumen de la cartera */
+.fin {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.9rem;
+}
+
+.fin-kpis {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.fin-kpis b {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(160, 240, 225, 0.05);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 400;
+}
+
+.fin-kpis em {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.fin-kpis .fin-up {
+  color: var(--lime);
+}
+
+.fin-chart {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 110;
+}
+
+.fin-area {
+  fill: rgba(63, 240, 208, 0.12);
+  stroke: none;
+}
+
+.fin-invested {
+  fill: none;
+  stroke: var(--muted);
+  stroke-dasharray: 4 5;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.fin-value {
+  fill: none;
+  stroke: var(--accent);
+  stroke-dasharray: 420;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.mock.is-in .fin-value {
+  animation: fin-draw 6s var(--ease-out) infinite;
+}
+
+.mock.is-in .fin-area {
+  animation: fin-fill 6s var(--ease-out) infinite;
+}
+
+@keyframes fin-draw {
+  0% {
+    stroke-dashoffset: 420;
+  }
+  45%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fin-fill {
+  0%,
+  25% {
+    opacity: 0;
+  }
+  55%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.fin-cal {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 3px;
+}
+
+.fin-cal i {
+  height: 0.85rem;
+  border-radius: 3px;
+  background: rgba(160, 240, 225, 0.1);
+}
+
+.fin-cal .g {
+  background: rgba(182, 255, 107, 0.75);
+}
+
+.fin-cal .r {
+  background: rgba(255, 107, 107, 0.7);
+}
+
+.mock.is-in .fin-cal i {
+  animation: fin-day 6s var(--ease-out) infinite backwards;
+}
+
+.fin-cal i:nth-child(7n + 2) {
+  animation-delay: 0.1s !important;
+}
+
+.fin-cal i:nth-child(7n + 3) {
+  animation-delay: 0.2s !important;
+}
+
+.fin-cal i:nth-child(7n + 4) {
+  animation-delay: 0.3s !important;
+}
+
+.fin-cal i:nth-child(7n + 5) {
+  animation-delay: 0.4s !important;
+}
+
+.fin-cal i:nth-child(7n + 6) {
+  animation-delay: 0.5s !important;
+}
+
+.fin-cal i:nth-child(7n) {
+  animation-delay: 0.6s !important;
+}
+
+@keyframes fin-day {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  55%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Maqueta de PanGestión: producción del día */
