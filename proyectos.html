@@ -32,9 +32,10 @@
         try {
           if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
           var s = sessionStorage;
-          if (s.getItem("ea-nav")) {
+          var nav = Number(s.getItem("ea-nav"));
+          s.removeItem("ea-nav");
+          if (nav && Date.now() - nav < 8000) {
             d.classList.add("is-entering");
-            s.removeItem("ea-nav");
           } else if (!s.getItem("ea-seen")) {
             d.classList.add("is-loading");
             s.setItem("ea-seen", "1");

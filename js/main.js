@@ -159,6 +159,8 @@
     proyectos: "Proyectos",
     cv: "Currículum",
   };
+  const samePath = (a, b) =>
+    a.replace(/index\.html$/, "") === b.replace(/index\.html$/, "");
   const pageFor = (pathname) => {
     if (pathname.endsWith("proyectos.html")) return "Proyectos";
     if (pathname.endsWith("cv.html")) return "Currículum";
@@ -174,6 +176,8 @@
 
   const entering = root.classList.contains("is-entering");
   const loading = root.classList.contains("is-loading");
+  // true mientras el telón tapa la página: en ese tiempo no se empieza otra transición.
+  let busy = entering || loading;
   gsap.set(curtain, {
     clipPath: entering ? "circle(150% at 50% 50%)" : "circle(0% at 50% 50%)",
   });
@@ -264,6 +268,7 @@
         ease: "expo.inOut",
       });
     loader.remove();
+    busy = false;
   };
 
   // Llegada desde otra página: el nombre del destino aparece y el telón se abre.
@@ -299,6 +304,7 @@
         ease: "expo.inOut",
       });
     curtainLabel.textContent = "";
+    busy = false;
   };
 
   // Al pulsar un enlace interno, un círculo crece desde el cursor y tapa la página.
@@ -314,15 +320,29 @@
       event.altKey ||
       link.target ||
       link.origin !== location.origin ||
-      link.protocol === "mailto:" ||
-      link.pathname === location.pathname
+      link.protocol === "mailto:"
     ) {
       return;
     }
+    if (samePath(link.pathname, location.pathname)) {
+      // Enlace a la misma página (p. ej. "Inicio" estando en la portada): en
+      // lugar de recargarla, sube arriba. Los enlaces con #ancla siguen igual.
+      if (!link.hash) {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
     event.preventDefault();
+    // Ya hay una transición en marcha: se ignora el clic para que no se
+    // reinicie el telón ni se mezclen dos destinos.
+    if (busy) return;
+    busy = true;
     const label = pageFor(link.pathname);
     try {
-      sessionStorage.setItem("ea-nav", "1");
+      // Se guarda la hora: si la navegación no llega a completarse, la marca
+      // caduca y no aparece un telón en la siguiente carga.
+      sessionStorage.setItem("ea-nav", String(Date.now()));
       sessionStorage.setItem("ea-label", label);
     } catch (error) {
       /* sin sessionStorage la entrada no muestra telón */
@@ -332,7 +352,7 @@
     curtainLabel.textContent = label;
     const chars = splitChars(curtainLabel);
     gsap
-      .timeline({ onComplete: () => (location.href = link.href) })
+      .timeline({ onComplete: () => location.assign(link.href) })
       .fromTo(
         curtain,
         { clipPath: `circle(0% at ${x} ${y})` },
@@ -351,8 +371,16 @@
 
   window.addEventListener("pageshow", (event) => {
     if (event.persisted) {
+      gsap.killTweensOf(curtain);
       gsap.set(curtain, { clipPath: "circle(0% at 50% 50%)" });
       curtainLabel.textContent = "";
+      busy = false;
+      try {
+        sessionStorage.removeItem("ea-nav");
+        sessionStorage.removeItem("ea-label");
+      } catch (error) {
+        /* sin sessionStorage no hay marcas que limpiar */
+      }
     }
   });
 
@@ -367,13 +395,21 @@
     document.body.append(dot);
     const label = $1(".cursor-label", dot);
     gsap.set(dot, { xPercent: -50, yPercent: -50 });
-    const x = gsap.quickTo(dot, "x", { duration: 0.35, ease: "power3.out" });
-    const y = gsap.quickTo(dot, "y", { duration: 0.35, ease: "power3.out" });
-    window.addEventListener("pointermove", (e) => {
-      x(e.clientX);
-      y(e.clientY);
-      root.classList.add("has-cursor");
-    });
+    // El punto se coloca justo donde está el ratón en cada movimiento, sin
+    // suavizado: como el cursor del sistema está oculto, cualquier retraso se nota.
+    const x = gsap.quickSetter(dot, "x", "px");
+    const y = gsap.quickSetter(dot, "y", "px");
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        x(e.clientX);
+        y(e.clientY);
+        if (!root.classList.contains("has-cursor")) {
+          root.classList.add("has-cursor");
+        }
+      },
+      { passive: true },
+    );
     document.addEventListener("pointerleave", () =>
       root.classList.remove("has-cursor"),
     );
@@ -445,35 +481,80 @@
       );
     });
     if (!finePointer || !chars.length) return chars;
+
+    // Cada letra reutiliza sus dos animaciones en lugar de crear unas nuevas
+    // en cada fotograma, y solo se mueve si su valor cambia de verdad.
+    const items = chars.map((char) => ({
+      char,
+      w: gsap.quickTo(char, "--w", { duration: 0.5, ease: "power2.out" }),
+      s: gsap.quickTo(char, "--s", { duration: 0.5, ease: "power2.out" }),
+      k: 0,
+      x: 0,
+      y: 0,
+    }));
+
+    // Las posiciones se miden de una vez y solo cuando pueden haber cambiado
+    // (scroll o tamaño de ventana), nunca en cada movimiento del ratón.
+    let dirty = true;
+    const measure = () => {
+      items.forEach((item) => {
+        const r = item.char.getBoundingClientRect();
+        item.x = r.left + r.width / 2;
+        item.y = r.top + r.height / 2;
+      });
+      dirty = false;
+    };
+    const markDirty = () => (dirty = true);
+    window.addEventListener("scroll", markDirty, { passive: true });
+    window.addEventListener("resize", markDirty);
+
+    // Solo trabaja mientras el texto se ve en pantalla.
+    let visible = true;
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        visible = entries.some((entry) => entry.isIntersecting);
+        if (!visible) {
+          items.forEach((item) => {
+            if (item.k) {
+              item.k = 0;
+              item.w(800);
+              item.s(0);
+            }
+          });
+        }
+        markDirty();
+      });
+      $("[data-proximity]").forEach((el) => io.observe(el));
+    }
+
     let mx = -9999;
     let my = -9999;
     let queued = false;
     const update = () => {
       queued = false;
-      chars.forEach((char) => {
-        const r = char.getBoundingClientRect();
-        const d = Math.hypot(
-          mx - (r.left + r.width / 2),
-          my - (r.top + r.height / 2),
-        );
+      if (!visible) return;
+      if (dirty) measure();
+      items.forEach((item) => {
+        const d = Math.hypot(mx - item.x, my - item.y);
         const k = Math.max(0, 1 - d / 340);
-        gsap.to(char, {
-          "--w": 800 - 600 * k,
-          "--s": k,
-          duration: 0.5,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
+        if (Math.abs(k - item.k) < 0.02) return;
+        item.k = k;
+        item.w(800 - 600 * k);
+        item.s(k);
       });
     };
-    window.addEventListener("pointermove", (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      if (!queued) {
-        queued = true;
-        requestAnimationFrame(update);
-      }
-    });
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        if (visible && !queued) {
+          queued = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true },
+    );
     return chars;
   };
 
@@ -950,11 +1031,27 @@
 
     if (finePointer) {
       tiles.forEach((tile) => {
-        tile.addEventListener("pointermove", (e) => {
+        let px = 0;
+        let py = 0;
+        let queued = false;
+        const paint = () => {
+          queued = false;
           const r = tile.getBoundingClientRect();
-          tile.style.setProperty("--mx", `${e.clientX - r.left}px`);
-          tile.style.setProperty("--my", `${e.clientY - r.top}px`);
-        });
+          tile.style.setProperty("--mx", `${px - r.left}px`);
+          tile.style.setProperty("--my", `${py - r.top}px`);
+        };
+        tile.addEventListener(
+          "pointermove",
+          (e) => {
+            px = e.clientX;
+            py = e.clientY;
+            if (!queued) {
+              queued = true;
+              requestAnimationFrame(paint);
+            }
+          },
+          { passive: true },
+        );
       });
     }
 
@@ -1294,6 +1391,7 @@
 
   // Si algo falla, se descubre la página en lugar de dejarla tapada.
   start().catch(() => {
+    busy = false;
     root.classList.remove("is-loading", "is-entering", "anim-ready");
     root.classList.add("anim-off");
     gsap.set(curtain, { clipPath: "circle(0% at 50% 50%)" });

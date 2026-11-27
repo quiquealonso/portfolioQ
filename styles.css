@@ -575,6 +575,8 @@ svg {
 }
 
 .hero-line {
+  /* El cambio de grosor de las letras solo recoloca esta línea, no la página */
+  contain: layout style;
   display: block;
   padding-bottom: 0.06em;
   overflow: clip;
@@ -2811,6 +2813,7 @@ svg {
 }
 
 .page-title {
+  contain: layout style;
   margin: 0 0 1.5rem;
   font-size: clamp(3.8rem, 15vw, 14rem);
   font-weight: 800;
@@ -3253,6 +3256,7 @@ svg {
   mix-blend-mode: difference;
   opacity: 0;
   pointer-events: none;
+  will-change: transform;
   transition:
     width 0.35s var(--ease-out),
     height 0.35s var(--ease-out),
